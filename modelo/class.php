@@ -44,13 +44,14 @@ Class Ventas extends Database{
         $bin->bind_param("s", $codproducto);
         $bin->execute();
     }
-    public function PUTprice($codproducto,$price){
+    public function PUTprice($codproducto, $name, $precio, $fecha, $cantidad){
         $conexion = parent::Conectar();
-        $sql = "UPDATE productos SET precio = ? WHERE cod_producto = ?";
+        $sql = "UPDATE productos SET nombre = ?, precio = ?, fecha_ingreso = ?, cantidad = ? WHERE cod_producto = ?";
         $bin = $conexion->prepare($sql);
-        $bin->bind_param("ss", $price,$codproducto);
+        $bin->bind_param("ssssi", $name, $precio, $fecha, $cantidad, $codproducto);
         $bin->execute();
     }
+    
     public function DELventa($cod){
         $conexion = parent::Conectar();
         $conexion->begin_transaction();

@@ -19,6 +19,10 @@ switch ($_GET["op"]) {
     $datos = $venta->PUTventas($body['codigo_producto']);
     echo 'Actualizadooo';
     break;
+  case 'putp':
+    $datos = $venta->PUTprice($body['codigo'],$body['nombre'],$body['precio'],$body['fecha'],$body['cantidad']);
+    echo 'actualizadoo3';
+    break;
   case 'del':
     $datos = $venta->DELventa($body['codigo_producto']);
     echo 'Eliminado corredctamente';
