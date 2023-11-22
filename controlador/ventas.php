@@ -12,18 +12,31 @@ switch ($_GET["op"]) {
     echo json_encode($datos);
     break;
   case 'post':
-    $datos = $venta->POSTventas($body['codigo'],$body['nombre'],$body['precio'],$body['fechaingreso'],$body['stock'],$body['codventa'],$body['vendidos'],$body['fechaventa']);
+    $datos = $venta->POSTventas($body['codigo'],$body['nombre'],$body['precio'],$body['fechaingreso'],$body['stock']);
     echo 'INSERTADOOO';
     break;
-  case 'putv':
-    $datos = $venta->PUTventas($body['codigo_producto']);
-    echo 'Actualizadooo';
+  case 'ventas':
+    $datos = $venta->ventas($body['codigo'],$body['vendidos']);
+    echo 'Registrados';
     break;
-  case 'putp':
-    $datos = $venta->PUTprice($body['codigo'],$body['nombre'],$body['precio'],$body['fecha'],$body['cantidad']);
-    echo 'actualizadoo3';
+  case 'ingeso':
+    $datos = $venta->ingresos($body['codigo'],$body['ingresado']);
+    echo 'productos';
     break;
+  case 'getv':
+    $datos = $venta->getv();
+    echo json_encode($datos);
+    break;
+  case 'geti':
+      $datos = $venta->geti();
+      echo json_encode($datos);
+      break;
   case 'del':
     $datos = $venta->DELventa($body['codigo_producto']);
     echo 'Eliminado corredctamente';
+    break;
+  case 'putv':
+    $datos = $venta->PUTven($body['codigo'],$body['cantidad']);
+    print 'actualizado';
+    break;
 }
